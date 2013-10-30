@@ -11,17 +11,21 @@ for mol in sdf:
         pass
 
 fps = {}
-
 for mol in mols:
     try:
         fp = AllChem.GetMorganFingerprintAsBitVect(mol,2)
         fp_bit = fp.ToBitString()
-        fps[ mol.GetProp("COMPOUND_ID") ] = fp_bit
+        string = ""
+        for bit in fp_bit:
+            string += bit+"\t"
+        fps[ mol.GetProp("COMPOUND_ID") ] = string.rstrip("\t")
     except:
         pass
 print len(fps)
 
-for i,v in fps.items():
-    print i,v
+f = open("bitmatrix.txt", "w")
+for k, v in fps.items():
+    f.write( "%s\t%s" % (k, v) )
+    f.write( "\n" )
 
-
+f.close()
