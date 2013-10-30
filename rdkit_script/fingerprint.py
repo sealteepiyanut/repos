@@ -13,7 +13,7 @@ for mol in sdf:
 fps = {}
 for mol in mols:
     try:
-        fp = AllChem.GetMorganFingerprintAsBitVect(mol,2)
+        fp = AllChem.GetMorganFingerprintAsBitVect(mol,2, nBits=1024)
         fp_bit = fp.ToBitString()
         string = ""
         for bit in fp_bit:
