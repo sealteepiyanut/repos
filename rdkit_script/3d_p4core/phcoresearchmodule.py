@@ -74,6 +74,7 @@ def check_mol( mol ):
                                 align_data = rdAlignment.GetAlignmentTransform( ref_mat , pro_mat, maxIterations=200 )
                                 AllChem.TransformMol( embed, align_data[1] )
                                 print align_data[0]
+                                print align_data[1]
                                 res.append( embed )
         else:
                 print "no hits"

@@ -1,0 +1,3 @@
+1.calc descriptor "python for_test_descs_norm.py train.sdf test.sdf"
+2.run prediction "python qsar_rdkit.py data.pkl"
+
